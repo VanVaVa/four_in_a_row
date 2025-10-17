@@ -1,20 +1,30 @@
+import { useState } from "react";
+import { useGameStore } from "../../entities/game/useGameStore";
 import Chip from "../../shared/components/chip/Chip";
 import styles from "./board.module.css";
-
-const boardData = [
-  [null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null],
-  [2, null, null, null, null, null, null],
-  [1, null, null, null, null, null, null],
-];
+import { generateInitialBoard } from "./constants";
 
 const Board = () => {
+  const { setPlayer, currentPlayer } = useGameStore();
+  const [board, setBoard] = useState(generateInitialBoard(7, 6));
+
   return (
     <div className={styles.board}>
-      {boardData.map((row) =>
-        row.map((el, idx) => <Chip key={idx} player={`player_${el}`} />)
+      {board.map((row, rowIdx) =>
+        row.map((el, idx) => (
+          <Chip
+            key={idx}
+            player={`player_${el}`}
+            onClick={() => {
+              setBoard((prev) => {
+                const newBoard = Array.from(prev);
+                newBoard[rowIdx][idx] = currentPlayer === "player_1" ? 1 : 2;
+                return newBoard;
+              });
+              setPlayer();
+            }}
+          />
+        ))
       )}
     </div>
   );
