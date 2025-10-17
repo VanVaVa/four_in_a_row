@@ -1,0 +1,10 @@
+:root {
+  --color-player-1: red;
+  --color-player-2: blue;
+  --color-white: #fff;
+  --color-black: #000;
+}
+
+body {
+  margin: 0;
+}

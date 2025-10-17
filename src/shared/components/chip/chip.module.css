@@ -1,0 +1,16 @@
+.chip {
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: #c8c8c8;
+}
+
+.chip[data-player="player_1"] {
+  background-color: var(--color-player-1);
+}
+
+.chip[data-player="player_2"] {
+  background-color: var(--color-player-2);
+}
