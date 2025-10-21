@@ -4,11 +4,10 @@ import React from "react";
 
 interface ChipProps {
   player?: string;
-  onClick?: VoidFunction;
 }
 
-const Chip: FC<ChipProps> = ({ player, onClick }) => (
-  <button className={styles.chip} data-player={player} onClick={onClick} />
+const Chip: FC<ChipProps> = ({ player }) => (
+  <div className={styles.chip} data-player={player} />
 );
 
 export default React.memo(Chip);

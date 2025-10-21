@@ -1,4 +1,4 @@
-import { generateInitialBoard } from "./helpers";
+import { checkWin, generateInitialBoard, getYForColumn } from "./helpers";
 import type { StatisticsRecord } from "./useGameStore";
 
 export const validator: (
@@ -15,35 +15,35 @@ export const validator: (
   const board = generateInitialBoard(7, 6);
 
   for (let move = 0; move < moves.length; move++) {
-    for (let y = board[0].length; y >= 0; y--) {
-      if (board[moves[move]][y] === null) {
-        if (move % 2 === 0) {
-          board[moves[move]][y] = 1;
-          statistics = {
-            ...statistics,
-            [`step_${move + 1}`]: {
-              player_1: [...statistics[`step_${move}`].player_1, [move, y]],
-              player_2: statistics[`step_${move}`].player_2,
-              board_state: "pending",
-            },
-          };
-        } else {
-          board[moves[move]][y] = 2;
-          statistics = {
-            ...statistics,
-            [`step_${move + 1}`]: {
-              player_1: statistics[`step_${move}`].player_1,
-              player_2: [...statistics[`step_${move}`].player_2, [move, y]],
-              board_state: "pending",
-            },
-          };
-        }
-        statistics[`step_${move}`].board_state = "pending";
-        break;
-      }
-    }
+    const x = moves[move];
+    const y = getYForColumn(board, x);
+    const player = (move % 2) + 1;
+
+    if (y === null) continue;
+
+    board[x][y] = player;
+
+    const winnerData = checkWin(board, x, y, player);
+    const boardState = winnerData ? "win" : "pending";
+
+    const stepData: StatisticsRecord = {
+      player_1:
+        move % 2 === 0
+          ? [...statistics[`step_${move}`].player_1, [x, y]]
+          : statistics[`step_${move}`].player_1,
+      player_2:
+        move % 2 === 1
+          ? [...statistics[`step_${move}`].player_2, [x, y]]
+          : statistics[`step_${move}`].player_2,
+      board_state: boardState,
+      ...(winnerData && { winner: winnerData }),
+    };
+
+    statistics = {
+      ...statistics,
+      [`step_${move + 1}`]: stepData,
+    };
   }
 
-  console.log(statistics);
   return statistics;
 };
