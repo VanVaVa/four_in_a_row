@@ -8,7 +8,7 @@ const Menu = () => {
   return (
     <div className={styles.wrapper}>
       <button onClick={resetGame}>
-        <ResetIcon fill={"var(--color-green)"} />
+        <ResetIcon fill={"var(--color-green)"} className={styles.button} />
       </button>
     </div>
   );

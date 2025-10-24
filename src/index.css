@@ -1,14 +1,13 @@
 :root {
   --color-player-1: #fa4134;
   --color-player-2: #e7fa2f;
-  --color-player-1-dark: #d01b5e;
-  --color-player-2-dark: #94d119;
   --color-white: #fff;
   --color-black: #000;
   --color-blue: #3497fa;
   --color-green: #e7fa2f;
   --color-red: #fa4134;
   --color-grey: #57697a;
+  --color-background: #c4e3f8;
 }
 
 body {

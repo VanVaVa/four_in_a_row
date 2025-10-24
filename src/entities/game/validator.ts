@@ -1,5 +1,5 @@
 import { checkWin, generateInitialBoard, getYForColumn } from "./helpers";
-import type { StatisticsRecord } from "./useGameStore";
+import type { BoardState, StatisticsRecord } from "./useGameStore";
 
 export const validator: (
   moves: number[]
@@ -24,7 +24,13 @@ export const validator: (
     board[x][y] = player;
 
     const winnerData = checkWin(board, x, y, player);
-    const boardState = winnerData ? "win" : "pending";
+
+    let boardState: BoardState;
+    if (moves.length >= 7 * 6) {
+      boardState = "draw";
+    } else {
+      boardState = winnerData ? "win" : "pending";
+    }
 
     const stepData: StatisticsRecord = {
       player_1:

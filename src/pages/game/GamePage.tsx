@@ -20,6 +20,7 @@ const GamePage = () => {
 
   return (
     <div className={styles.wrapper}>
+      <div className={styles.background} />
       <Board />
       <Menu />
       <CurrentPlayer />

@@ -14,20 +14,17 @@ const Board = () => {
           className={styles.column}
           onClick={() => move(colIdx)}
         >
-          {col.map((el, idx) => {
-            console.log(winData, [colIdx, idx]);
-
-            return (
-              <Chip
-                key={idx}
-                player={`player_${el}`}
-                isConnected={
-                  winData?.find((el) => el[0] === colIdx && el[1] === idx) !==
+          {col.map((el, idx) => (
+            <Chip
+              key={idx}
+              player={`player_${el}`}
+              isConnected={
+                winData !== "draw" &&
+                winData?.find((el) => el[0] === colIdx && el[1] === idx) !==
                   undefined
-                }
-              />
-            );
-          })}
+              }
+            />
+          ))}
         </button>
       ))}
     </div>

@@ -7,7 +7,7 @@ interface WinModalProps {
 }
 
 const WinModal: FC<WinModalProps> = ({ dialogRef }) => {
-  const { resetGame, currentPlayer } = useGameStore();
+  const { resetGame, currentPlayer, winData } = useGameStore();
 
   const handleClick = () => {
     dialogRef.current?.close();
@@ -18,7 +18,9 @@ const WinModal: FC<WinModalProps> = ({ dialogRef }) => {
     <dialog ref={dialogRef} className={styles.modal}>
       <div className={styles.modalBackground} />
       <div className={styles.modalContentWrapper}>
-        <h2>Победил игрок {currentPlayer}</h2>
+        <h2>
+          {winData === "draw" ? "Ничья!" : `Победил игрок ${currentPlayer}!`}
+        </h2>
         <button className="filled" onClick={handleClick}>
           Перезапустить игру
         </button>

@@ -4,10 +4,12 @@ import { validator } from "./validator";
 
 export type Player = "player_1" | "player_2";
 
+export type BoardState = "waiting" | "pending" | "win" | "draw";
+
 export type StatisticsRecord = {
   player_1: number[][];
   player_2: number[][];
-  board_state: "waiting" | "pending" | "win" | "draw";
+  board_state: BoardState;
   winner?: WinnerData;
 };
 
@@ -19,7 +21,7 @@ export type WinnerData = {
 type State = {
   currentPlayer: Player;
   moves: number[];
-  winData?: number[][];
+  winData?: number[][] | "draw";
 };
 
 type Actions = {
@@ -57,10 +59,13 @@ export const useGameStore = create<State & Actions>((set, get) => ({
       const moves = [...state.moves, x];
       const statistics = validator(moves);
       const lastMove = statistics?.[`step_${moves.length}`];
-      const isWin = lastMove.board_state === "win";
+      const isWin =
+        lastMove.board_state === "win" || lastMove.board_state === "draw";
       if (!isWin) state.setPlayer();
-      console.log(lastMove.winner?.positions);
-      return { moves, winData: isWin ? lastMove.winner?.positions : [] };
+      return {
+        moves,
+        winData: isWin ? lastMove.winner?.positions || "draw" : [],
+      };
     }),
   resetGame: () =>
     set(() => {
