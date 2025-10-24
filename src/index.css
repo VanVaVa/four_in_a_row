@@ -1,10 +1,48 @@
 :root {
-  --color-player-1: red;
-  --color-player-2: blue;
+  --color-player-1: #fa4134;
+  --color-player-2: #e7fa2f;
+  --color-player-1-dark: #d01b5e;
+  --color-player-2-dark: #94d119;
   --color-white: #fff;
   --color-black: #000;
+  --color-blue: #3497fa;
+  --color-green: #e7fa2f;
+  --color-red: #fa4134;
+  --color-grey: #57697a;
 }
 
 body {
   margin: 0;
+  font-size: 20px;
+  color: #57697a;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-grey);
+}
+
+button {
+  border: none;
+  padding: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  color: var(--color-blue);
+  background-color: transparent;
+  font-weight: 500;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+button.filled {
+  border-radius: 20px;
+  background-color: var(--color-blue);
+  color: var(--color-green);
 }

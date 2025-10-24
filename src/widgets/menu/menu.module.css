@@ -1,0 +1,9 @@
+.wrapper {
+  padding: 20px 30px;
+  background-color: var(--color-blue);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  position: fixed;
+  left: 30px;
+  bottom: 0;
+}

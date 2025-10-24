@@ -1,0 +1,39 @@
+.wrapper {
+  background-color: var(--color-blue);
+  color: var(--color-green);
+  padding: 20px 40px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  right: 40px;
+  gap: 20px;
+  font-size: 30px;
+  font-weight: 600;
+  transition: background-color 0.1s ease-in-out;
+}
+
+.wrapper span {
+  color: currentColor;
+  transition: inherit;
+}
+
+.playerDisplay {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: currentColor;
+  transition: inherit;
+  filter: drop-shadow(5px 5px rgba(0, 0, 0, 0.25));
+}
+
+.wrapper[data-player="player_1"] {
+  color: var(--color-player-1);
+}
+
+.wrapper[data-player="player_2"] {
+  color: var(--color-player-2);
+}

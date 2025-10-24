@@ -1,12 +1,27 @@
 .board {
   display: flex;
-  gap: 20px;
+  background-color: var(--color-blue);
+  padding: 10px;
+  border-radius: 20px;
+  background-size: 80px 80px;
+  background-position: 10px 10px;
+  background-image: radial-gradient(#fff 29px, transparent 29px);
+  filter: drop-shadow(5px 5px rgba(0, 0, 60, 0.25));
 }
 
 .column {
   display: flex;
   flex-direction: column;
-  gap: inherit;
+  gap: 20px;
   border: none;
   background: none;
+  padding: 10px;
+}
+
+.column:disabled {
+  cursor: default;
+}
+
+.column:hover {
+  transform: none;
 }

@@ -1,0 +1,64 @@
+.modal {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  overflow: hidden;
+  width: 800px;
+  height: 800px;
+  position: relative;
+}
+
+.modal[open] {
+  animation: 0.3s ease-in modal-open;
+}
+
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modalBackground {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 800px;
+  height: 800px;
+  background-image: url("/public/star.svg");
+  animation: 5s linear infinite star-rotate;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  z-index: -1;
+}
+
+.modalContentWrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@keyframes modal-open {
+  0% {
+    transform: scale(0);
+  }
+
+  70% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes star-rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(68.8deg);
+  }
+}

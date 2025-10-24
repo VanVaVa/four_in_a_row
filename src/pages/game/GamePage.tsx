@@ -2,27 +2,28 @@ import { useEffect, useRef } from "react";
 import { useGameStore } from "../../entities/game/useGameStore";
 import Board from "../../widgets/board/Board";
 import styles from "./gamePage.module.css";
+import CurrentPlayer from "../../shared/components/currentPlayer/CurrentPlayer";
+import Menu from "../../widgets/menu/Menu";
+import WinModal from "../../shared/components/winModal/WinModal";
 
 const GamePage = () => {
-  const { isEnd, resetGame } = useGameStore();
+  const { winData } = useGameStore();
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
-    if (isEnd) dialogRef.current?.showModal();
-    else dialogRef.current?.close();
-  }, [isEnd]);
-
-  const handleClick = () => {
-    dialogRef.current?.close();
-    resetGame();
-  };
+    if (winData?.length) {
+      setTimeout(() => {
+        dialogRef.current?.showModal();
+      }, 1700);
+    } else dialogRef.current?.close();
+  }, [winData]);
 
   return (
     <div className={styles.wrapper}>
       <Board />
-      <dialog ref={dialogRef}>
-        Победил игрок я<button onClick={handleClick}>Перезапустить игру</button>
-      </dialog>
+      <Menu />
+      <CurrentPlayer />
+      <WinModal dialogRef={dialogRef} />
     </div>
   );
 };

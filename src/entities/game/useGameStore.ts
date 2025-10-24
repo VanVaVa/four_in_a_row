@@ -19,7 +19,7 @@ export type WinnerData = {
 type State = {
   currentPlayer: Player;
   moves: number[];
-  isEnd: boolean;
+  winData?: number[][];
 };
 
 type Actions = {
@@ -32,7 +32,7 @@ type Actions = {
 export const useGameStore = create<State & Actions>((set, get) => ({
   currentPlayer: "player_1",
   moves: [],
-  isEnd: false,
+  winData: [],
 
   setPlayer: () =>
     set((state) => ({
@@ -57,11 +57,13 @@ export const useGameStore = create<State & Actions>((set, get) => ({
       const moves = [...state.moves, x];
       const statistics = validator(moves);
       const lastMove = statistics?.[`step_${moves.length}`];
-      state.setPlayer();
-      return { moves, isEnd: lastMove.board_state === "win" ? true : false };
+      const isWin = lastMove.board_state === "win";
+      if (!isWin) state.setPlayer();
+      console.log(lastMove.winner?.positions);
+      return { moves, winData: isWin ? lastMove.winner?.positions : [] };
     }),
   resetGame: () =>
     set(() => {
-      return { moves: [], currentPlayer: "player_1" };
+      return { moves: [], currentPlayer: "player_1", winData: [] };
     }),
 }));
