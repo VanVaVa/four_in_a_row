@@ -14,6 +14,7 @@ body {
   margin: 0;
   font-size: 20px;
   color: #57697a;
+  font-family: "Montserrat", Arial, sans-serif;
 }
 
 h1,
@@ -40,8 +41,21 @@ button:hover {
   transform: scale(1.1);
 }
 
+button:active {
+  transition: none;
+  translate: 0 5px;
+}
+
 button.filled {
   border-radius: 20px;
   background-color: var(--color-blue);
   color: var(--color-green);
+}
+
+button.filled:active {
+  background-color: #2045d3;
+}
+
+.shadow {
+  filter: drop-shadow(5px 5px rgba(0, 0, 0, 0.25));
 }

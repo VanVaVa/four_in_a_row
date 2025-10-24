@@ -1,0 +1,17 @@
+.menuWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 60px;
+  background-color: var(--color-blue);
+  border-radius: 20px;
+}
+
+.menuWrapper button {
+  background-color: var(--color-green);
+}
+
+.title {
+  font-size: 50px;
+  color: var(--color-white);
+}

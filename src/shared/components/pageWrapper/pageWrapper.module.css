@@ -14,4 +14,5 @@
   background-size: 140px;
   rotate: 45deg;
   background-color: var(--color-background);
+  z-index: -1;
 }

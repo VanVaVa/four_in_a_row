@@ -1,0 +1,19 @@
+import type { SVGProps, FC } from "react";
+
+const LeaderboardIcon: FC<SVGProps<SVGSVGElement>> = (props) => (
+  <svg
+    width="70"
+    height="70"
+    viewBox="0 0 70 70"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <rect x="25" y="20" width="20" height="50" />
+    <rect y="46" width="20" height="24" />
+    <rect x="50" y="33" width="20" height="37" />
+    <path d="M34.5 0L36.5206 6.21885H43.0595L37.7694 10.0623L39.7901 16.2812L34.5 12.4377L29.2099 16.2812L31.2306 10.0623L25.9405 6.21885H32.4794L34.5 0Z" />
+  </svg>
+);
+
+export default LeaderboardIcon;

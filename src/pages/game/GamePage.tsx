@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 import { useGameStore } from "../../entities/game/useGameStore";
 import Board from "../../widgets/board/Board";
-import styles from "./gamePage.module.css";
 import CurrentPlayer from "../../shared/components/currentPlayer/CurrentPlayer";
 import Menu from "../../widgets/menu/Menu";
 import WinModal from "../../shared/components/winModal/WinModal";
+import PageWrapper from "../../shared/components/pageWrapper/PageWrapper";
 
 const GamePage = () => {
   const { winData } = useGameStore();
@@ -19,13 +19,12 @@ const GamePage = () => {
   }, [winData]);
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.background} />
+    <PageWrapper>
       <Board />
       <Menu />
       <CurrentPlayer />
       <WinModal dialogRef={dialogRef} />
-    </div>
+    </PageWrapper>
   );
 };
 

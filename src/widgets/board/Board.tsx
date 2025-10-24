@@ -11,7 +11,7 @@ const Board = () => {
     <div className={styles.board}>
       <div
         style={{
-          display: activeColumn === null ? "none" : "block",
+          display: activeColumn !== null && !winData?.length ? "block" : "none",
           left: 80 * (activeColumn || 0),
         }}
         className={styles.columnPointer}
