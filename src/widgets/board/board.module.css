@@ -25,3 +25,13 @@
 .column:hover {
   transform: none;
 }
+
+.columnPointer {
+  position: absolute;
+  top: -50px;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 30px solid var(--color-green);
+  margin-inline: 10px;
+  transition: left 0.1s ease-in-out;
+}
