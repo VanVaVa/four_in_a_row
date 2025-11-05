@@ -1,19 +1,10 @@
 .modal {
-  border: none;
   padding: 0;
   background-color: transparent;
   overflow: hidden;
   width: 800px;
   height: 800px;
   position: relative;
-}
-
-.modal[open] {
-  animation: 0.3s ease-in modal-open;
-}
-
-.modal::backdrop {
-  background-color: rgba(0, 0, 0, 0.75);
 }
 
 .modalBackground {
@@ -37,20 +28,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
-
-@keyframes modal-open {
-  0% {
-    transform: scale(0);
-  }
-
-  70% {
-    transform: scale(1.1);
-  }
-
-  100% {
-    transform: scale(1);
-  }
+  gap: 20px;
 }
 
 @keyframes star-rotate {

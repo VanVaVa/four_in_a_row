@@ -1,5 +1,5 @@
 import { directions } from "./constants";
-import type { WinnerData } from "./useGameStore";
+import type { WinnerData } from "./type";
 
 export const generateInitialBoard: (
   x: number,

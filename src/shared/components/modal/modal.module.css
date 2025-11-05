@@ -1,0 +1,11 @@
+.modalWrapper {
+  padding: 30px;
+  border-radius: 20px;
+  min-width: 350px;
+}
+
+.closeWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}

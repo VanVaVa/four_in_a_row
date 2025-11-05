@@ -35,3 +35,11 @@
   margin-inline: 10px;
   transition: left 0.1s ease-in-out;
 }
+
+.columnPointer[data-player="player_1"] {
+  border-top-color: var(--color-player-1);
+}
+
+.columnPointer[data-player="player_2"] {
+  border-top-color: var(--color-player-2);
+}

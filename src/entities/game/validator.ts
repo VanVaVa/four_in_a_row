@@ -1,5 +1,5 @@
 import { checkWin, generateInitialBoard, getYForColumn } from "./helpers";
-import type { BoardState, StatisticsRecord } from "./useGameStore";
+import type { BoardState, StatisticsRecord } from "./type";
 
 export const validator: (
   moves: number[]

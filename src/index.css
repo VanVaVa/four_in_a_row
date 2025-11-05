@@ -17,6 +17,11 @@ body {
   font-family: "Montserrat", Arial, sans-serif;
 }
 
+* {
+  box-sizing: border-box;
+  font-size: 20px;
+}
+
 h1,
 h2,
 h3,
@@ -24,20 +29,35 @@ h4,
 h5,
 h6 {
   color: var(--color-grey);
+  margin: 0;
 }
 
-button {
+h1,
+h2 {
+  text-align: center;
+  font-size: 40px;
+}
+
+a {
+  text-decoration: none;
+  display: block;
+}
+
+button,
+a {
   border: none;
   padding: 20px;
-  font-size: 20px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   color: var(--color-blue);
   background-color: transparent;
   font-weight: 500;
+  display: flex;
+  justify-content: center;
 }
 
-button:hover {
+button:hover,
+a:hover {
   transform: scale(1.1);
 }
 
@@ -46,7 +66,8 @@ button:active {
   translate: 0 5px;
 }
 
-button.filled {
+button.filled,
+a.filled {
   border-radius: 20px;
   background-color: var(--color-blue);
   color: var(--color-green);
@@ -56,6 +77,55 @@ button.filled:active {
   background-color: #2045d3;
 }
 
+button.filled:disabled,
+input:disabled {
+  transform: none;
+  cursor: default;
+  opacity: 0.7;
+}
+
 .shadow {
   filter: drop-shadow(5px 5px rgba(0, 0, 0, 0.25));
+}
+
+dialog {
+  border: none;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+dialog[open] {
+  animation: 0.3s ease-in modal-open;
+}
+
+input {
+  border: 3px solid var(--color-blue);
+  background-color: var(--color-background);
+  outline: none;
+  padding: 10px;
+  border-radius: 20px;
+  color: var(--color-grey);
+}
+
+input[type="color"] {
+  padding: 0;
+  display: block;
+  height: 100%;
+  aspect-ratio: 1;
+}
+
+@keyframes modal-open {
+  0% {
+    transform: scale(0);
+  }
+
+  70% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
