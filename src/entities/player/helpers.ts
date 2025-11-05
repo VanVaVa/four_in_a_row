@@ -1,4 +1,4 @@
-import type { Player } from "../game/useGameStore";
+import type { Player } from "../game/type";
 
 export const setPlayerColor = (role: Player, color: string) => {
   const root = document.documentElement;
