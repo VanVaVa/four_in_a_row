@@ -4,13 +4,11 @@ import styles from "./currentPlayer.module.css";
 
 const CurrentPlayer = () => {
   const { currentPlayer } = useGameStore();
-  const { getSessionPlayers } = usePlayerStore();
+  const { sessionPlayers, getPlayer } = usePlayerStore();
 
   return (
     <div className={styles.wrapper} data-player={currentPlayer}>
-      <span>
-        {getSessionPlayers()[currentPlayer === "player_1" ? 0 : 1]?.data.name}
-      </span>
+      <span>{getPlayer(sessionPlayers[currentPlayer] || "")?.name}</span>
       <div className={styles.playerDisplay} />
     </div>
   );

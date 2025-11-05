@@ -22,7 +22,6 @@ type Actions = {
   getPlayer: (id: string) => PlayerData | null;
   getAllPlayers: () => { id: string; data: PlayerData }[];
   setSessionPlayer: (id: string, role: Player) => void;
-  getSessionPlayers: () => ({ data: PlayerData; id: string } | null)[];
   updatePlayerPoints: (id: string, points: number) => void;
   logIn: (role: Player, data: PlayerData) => string | null;
   signUp: (role: Player, data: PlayerData) => string | null;
@@ -41,6 +40,7 @@ export const usePlayerStore = create<State & Actions>((set, get) => ({
   },
   getPlayer: (id) => {
     const player = localStorage.getItem(id);
+    console.log(player);
     if (player === null) return;
     return JSON.parse(player);
   },
@@ -58,28 +58,17 @@ export const usePlayerStore = create<State & Actions>((set, get) => ({
     set((state) => ({
       sessionPlayers: { ...state.sessionPlayers, [role]: id },
     })),
-  getSessionPlayers: () => {
-    const { player_1, player_2 } = get().sessionPlayers;
-    const players: ({ data: PlayerData; id: string } | null)[] = [null, null];
-    if (player_1) {
-      const playerData = get().getPlayer(player_1);
-      if (playerData) players[0] = { data: playerData, id: player_1 };
-    }
-    if (player_2) {
-      const playerData = get().getPlayer(player_2);
-      if (playerData) players[1] = { data: playerData, id: player_2 };
-    }
-    return players;
-  },
   updatePlayerPoints: (id, points) => {
-    const player = sessionStorage.getItem(id);
+    const player = localStorage.getItem(id);
     if (player === null) return;
+    console.log("update");
     let playerData = JSON.parse(player);
     playerData = {
       ...playerData,
-      points: playerData.points + points,
+      points: playerData.points ? playerData.points + points : points,
     };
-    sessionStorage.setItem(id.toString(), JSON.stringify(playerData));
+    console.log(playerData.points);
+    localStorage.setItem(id.toString(), JSON.stringify(playerData));
   },
   logIn: (role, data) => {
     const players = get().getAllPlayers();

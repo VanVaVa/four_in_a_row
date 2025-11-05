@@ -5,18 +5,23 @@ import CurrentPlayer from "../../shared/components/currentPlayer/CurrentPlayer";
 import Menu from "../../widgets/menu/Menu";
 import WinModal from "../../shared/components/winModal/WinModal";
 import PageWrapper from "../../shared/components/pageWrapper/PageWrapper";
+import { usePlayerStore } from "../../entities/player/usePlayerStore";
 
 const GamePage = () => {
-  const { winData } = useGameStore();
+  const { winData, currentPlayer } = useGameStore();
+  const { updatePlayerPoints, sessionPlayers } = usePlayerStore();
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     if (winData?.length) {
       setTimeout(() => {
         dialogRef.current?.showModal();
+        const player = sessionPlayers[currentPlayer];
+        if (!player) return;
+        updatePlayerPoints(player, 100);
       }, 1700);
     } else dialogRef.current?.close();
-  }, [winData]);
+  }, [currentPlayer, sessionPlayers, updatePlayerPoints, winData]);
 
   return (
     <PageWrapper>

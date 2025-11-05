@@ -1,0 +1,38 @@
+.wrapper {
+  background-color: var(--color-blue);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.header {
+  color: var(--color-white);
+}
+
+.table {
+  width: 100%;
+  min-width: 350px;
+  background-color: var(--color-background);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 50px;
+  padding-block: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 20px;
+}
+
+.row:nth-child(odd) {
+  background-color: rgb(144, 208, 255);
+}

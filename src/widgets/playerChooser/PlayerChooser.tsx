@@ -10,6 +10,7 @@ const INITIAL_PLAYER_DATA = {
   name: "",
   password: "",
   color: "#ffffff",
+  points: 0,
 };
 
 interface PlayerChooserProps {

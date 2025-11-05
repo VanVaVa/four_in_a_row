@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const MainPage = () => {
   const modalRef = useRef<HTMLDialogElement | null>(null);
-  const { getSessionPlayers } = usePlayerStore();
+  const { sessionPlayers } = usePlayerStore();
   const navigate = useNavigate();
 
   return (
@@ -23,7 +23,7 @@ const MainPage = () => {
         >
           <PlayIcon fill="var(--color-blue)" className="shadow" />
         </button>
-        <button className="filled">
+        <button className="filled" onClick={() => navigate("/leaderboard")}>
           <LeaderboardIcon fill="var(--color-blue)" className="shadow" />
         </button>
       </div>
@@ -35,7 +35,9 @@ const MainPage = () => {
         </form>
         <button
           className="filled"
-          disabled={getSessionPlayers().includes(null)}
+          disabled={
+            sessionPlayers.player_1 === null || sessionPlayers.player_2 === null
+          }
           onClick={() => navigate("/game")}
         >
           Начать игру
